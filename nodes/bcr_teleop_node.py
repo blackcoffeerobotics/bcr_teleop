@@ -59,7 +59,7 @@ class _GetchWindows:
 
 if __name__ == '__main__':
 
-    rospy.init_node('key_teleop', anonymous=True)
+    rospy.init_node('key_teleop_node')
     vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
     rospy.Timer(rospy.Duration(0.05), publish_event)
     cmd_vel_msg = Twist()
