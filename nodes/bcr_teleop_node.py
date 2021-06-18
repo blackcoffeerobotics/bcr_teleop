@@ -59,13 +59,18 @@ class _GetchWindows:
 
 if __name__ == '__main__':
 
-    rospy.init_node('key_teleop_node')
+    rospy.init_node('bcr_teleop_node')
     vel_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
     rospy.Timer(rospy.Duration(0.05), publish_event)
     cmd_vel_msg = Twist()
     getch = _Getch()
-    rate = rospy.Rate(5)
-    rospy.loginfo("w/a/s/d keyboard. Press q to terminate")
+    rospy.loginfo("\n\tw: increment linear velocity by 0.1,\n\
+        s: decrement linear velocity by 0.1,\n\
+        a: increment angular velocity by 0.1,\n\
+        d: decrement angular velocity by 0.1,\n\
+        space: zero velocity command,\n\
+        q: QUIT")
+
     try:
         while (not rospy.is_shutdown()):
             key_in = getch()
@@ -81,10 +86,8 @@ if __name__ == '__main__':
                 cmd_vel_msg.linear.x = 0
                 cmd_vel_msg.angular.z = 0
                 if (key_in == "q"):
-                    rate.sleep()
                     break
-            print("linear: " + str(cmd_vel_msg.linear.x),
-                  "\tangular" + str(cmd_vel_msg.angular.z))
-            rate.sleep()
+            rospy.loginfo("linear: %f, angular: %f"
+                          % (cmd_vel_msg.linear.x, cmd_vel_msg.angular.z))
     except rospy.ROSInterruptException:
         pass
