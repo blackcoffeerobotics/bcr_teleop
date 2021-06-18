@@ -3,7 +3,6 @@
 """
     Author: Gaurav Gupta
     Email: gaurav@blackcoffeerobotics.com
-    Copyright (c): Black Coffee Robotics LLP
     Ref: https://stackoverflow.com/questions/510357/how-to-read-a-single-character-from-the-user
 """
 
