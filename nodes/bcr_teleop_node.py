@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 """
     Author: Gaurav Gupta
@@ -26,7 +26,8 @@ class _Getch:
         except ImportError:
             self.impl = _GetchUnix()
 
-    def __call__(self): return self.impl()
+    def __call__(self):
+        return self.impl()
 
 
 class _GetchUnix:
